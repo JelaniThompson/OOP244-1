@@ -1,0 +1,10 @@
+
+In line number 3 of your output:
+The output should be:
+Welcome to SeneGraph
+But your output is: 
+[0m[00merror.txt[0m  [00mgraph.h[0m     [00mseneGraph.cpp[0m  [00mtools.h[0m  [00;32mws[0m
+^
+|
+Professor's character ASCII code: hex(57), dec(87)
+un-matched character ASCII code: hex(1b), dec(27)

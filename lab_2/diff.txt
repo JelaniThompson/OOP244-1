@@ -1,0 +1,10 @@
+
+In line number 8 of your output:
+The output should be:
+Enter the name of the Kingdom: The_Vale
+But your output is: 
+Enter the name of the Kingdom: The_Value
+                                      ^
+--------------------------------------|
+Professor's character ASCII code: hex(65), dec(101)
+un-matched character ASCII code: hex(75), dec(117)

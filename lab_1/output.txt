@@ -1,4 +1,4 @@
-Script started on Tue 23 Jan 2018 12:29:59 PM EST
+Script started on Sat 27 Jan 2018 04:42:28 PM EST
 ljjunio@matrix:~/Documents/OOP244/lab_1> ws
 Welcome to SeneGraph
 No Of Samples: 0
@@ -38,4 +38,4 @@ Thanks for using SeneGraph
 ljjunio@matrix:~/Documents/OOP244/lab_1> exit
 exit
 
-Script done on Tue 23 Jan 2018 12:30:37 PM EST
+Script done on Sat 27 Jan 2018 04:43:09 PM EST

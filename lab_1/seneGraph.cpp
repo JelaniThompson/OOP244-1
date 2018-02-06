@@ -4,6 +4,7 @@
 #include "tools.h"
 
 using namespace std;
+using namespace sict;
 
 // SeneGraph program
 int main() {

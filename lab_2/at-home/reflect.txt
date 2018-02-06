@@ -1,0 +1,23 @@
+1) Why do you have to allocate new dynamic memory when you increase the size of an existing array of dynamically allocated memory?
+
+Another memory allocation is needed due to the fact that the previous allocation (pKingdom) already has a set memory taken from the user. Memory has to once again be allocated before use.
+
+2) The Kingdom structure stores the name of the Kingdom in an array of characters. At the end of the program, we do not use the delete operator to deallocate the memory occupied by the name. Why don't we use the deallocate operator on this array itself?
+
+Since the Kingdom pointer is actually the memory that's being deallocated, the memory that is consumed by the kingdom name also belongs in that group of addresses starting from Kingdom pointer's address. When the Kingdom pointer is deallocated, the array that forms the kingdom name is deallocated as well.
+
+3) There are two display functions definitions. How does the compiler know which definition to call from your main function?
+
+The compiler is smart enough to differentiate between the two identical functions baesd on the parameters that are being passed to it.
+
+4.) What have you learned during this workshop?
+
+In this workshop, I have learned how to dynamically allocate objects and how to allocate more memory when needed.
+
+--- Quiz 2 Reflection ---
+
+I did not answer questions number 2 and 3 incorrectly. 
+
+I confused accessibility label with queries, modifiers, and special member functions.
+
+I also confused the last question of the quiz with the protected access label instead of private. I should read the question mor carefully next time.

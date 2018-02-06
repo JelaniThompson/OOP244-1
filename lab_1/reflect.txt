@@ -1,0 +1,23 @@
+1. What is a namespace and explain its purpose.
+
+A namespace is a solution created so that variables inside a certain scope can bypass the one definition rule. Without the use of namespaces, developers working on the same projects would have to constantly keep track of variable names that are being used to ensure that the one definition rule is followed.
+
+2. Why are header files needed?
+
+Header files contains the function declarations (as well as definitions) of built in functions that can be used within implementation files. They provide a means of not repeating code within different implementation files. For example, square.cpp and circle.cpp may contain the same header file for the library shape.h which contains the function area(). 
+
+Header files allow the code to be much cleaner and improves readability while containing code that needs to be repeated between multiple implementation files.
+
+3. Why should you never compile header files?
+
+Compiling header files is a useless action since the content of header files are just included within the respective implementation file that called it, not compiled into their own independent translation unit. 
+
+Compiling header files will not cause any harmful consequences, however, it is a waste of compilation step and should not be done.
+
+4. Why should you never include .cpp files in another file?
+
+Including the .cpp files in another file defeats the entire purpose of separating code into different modules. Including shape.cpp in circle.cpp is the same as taking the code from shape.cpp and putting them on top of the code of circle.cpp.
+
+5. What did I learn from this workshop?
+
+I learned that including .cpp files in an implementation file is not good coding practice. It is best to create organized code separated by modules in order to maintain encapsulation and inheritance within the project.

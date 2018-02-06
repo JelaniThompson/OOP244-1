@@ -1,0 +1,24 @@
+Script started on Mon 18 Sep 2017 01:29:59 AM EDT
+fardad.soleimanloo@matrix:~/oop244/DEV/Workshops/WS02/in-lab> ws
+==========
+Input data
+==========
+Enter the number of Kingdoms: 2
+Kingdom #1: 
+Enter the name of the Kingdom: The_Vale
+Enter the number of people living in The_Vale: 234567
+Kingdom #2: 
+Enter the name of the Kingdom: The_Reach
+Enter the number of people living in The_Reach: 567890
+==========
+
+------------------------------
+The 1st kingdom entered is
+------------------------------
+The_Vale, population 234567
+------------------------------
+
+fardad.soleimanloo@matrix:~/oop244/DEV/Workshops/WS02/in-lab> exit
+exit
+
+Script done on Mon 18 Sep 2017 01:30:29 AM EDT

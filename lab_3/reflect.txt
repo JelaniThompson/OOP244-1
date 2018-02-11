@@ -1,0 +1,15 @@
+1.) There are the maximum name length + 1 characters alloted for the names. This is because every string (character array) has to have null at the end of it so that it is recognized that the end of the data is where the null is located.
+
+i.e
+
+char name[4] = "abc";
+
+in the memory this is stored as
+
+a | b | c | \0
+
+The null terminator acts as a delimeter for the cascading pieces of memory.
+
+2. The two set() functions are considered an error in C, because C does not have a feature for function overloading. Function overloading allows the programmer to use the same name for 2 different functions in terms of parameters. Func(a,b) will work differently than Func(a,b,c) because the compiler is smart enough to distinguish that they both operate with different parameters.
+
+3. In this workshop, I have learned how classes work in modules. I have never used classes in a modular setting until now.

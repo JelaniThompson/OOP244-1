@@ -1,0 +1,40 @@
+Script started on Fri 09 Feb 2018 12:54:36 PM EST
+ljjunio@matrix:~/Documents/OOP244/OOP244/lab_3/at-home> ws
+Canada Revenue Agency Account App
+=================================
+
+Please enter your family name: Doe
+Please enter your given name: 
+Please enter your social insurance number (0 to quit): 193456787
+Invalid input! Try again.
+Please enter your family name: Doe
+Please enter your given name: Jane
+Please enter your social insurance number (0 to quit): 123456789
+Invalid input! Try again.
+Please enter your family name: Doe
+Please enter your given name: Jane
+Please enter your social insurance number (0 to quit): 193456787
+Please enter the year of your tax return (0 to quit): 2014
+Please enter the balance owing on your tax return (0 to quit): 34.56
+Please enter the year of your tax return (0 to quit): 2015
+Please enter the balance owing on your tax return (0 to quit): -1234
+Please enter the year of your tax return (0 to quit): 2016
+Please enter the balance owing on your tax return (0 to quit): 1.23
+Please enter the year of your tax return (0 to quit): 2013
+Please enter the balance owing on your tax return (0 to quit): -0.12
+Please enter the year of your tax return (0 to quit): 0
+----------------------------------------
+Testing the display function
+----------------------------------------
+Family Name: Doe
+Given Name : Jane
+CRA Account: 193456787
+Year (2014) balance owing: 34.56
+Year (2015) refund due: 1234.00
+Year (2016) No balance owing or refund due!
+Year (2013) No balance owing or refund due!
+----------------------------------------
+ljjunio@matrix:~/Documents/OOP244/OOP244/lab_3/at-home> exit
+exit
+
+Script done on Fri 09 Feb 2018 12:55:48 PM EST

@@ -1,0 +1,25 @@
+1) What is a safe empty state? Could you define another state as the safe empty
+state?
+
+The safe empty state is a state for an object where it does not contain values that are user defined (1, 2, 3, 4, 5, 6... for integers, and not null for char and strings). It is used to ensure that the object does not contain garbage values upon initial creation of the object.
+
+Aside from the safe there is the not empty state where there are values already inside the object's properties.
+
+2) Describe how you have minimized code duplication.
+
+I minimized code manipulation using the constructor to initialize invalid parameters to an empty state.
+
+3) Explain why the canTravelWith(...) member function can access the private data of the object referenced in its parameter.
+
+It is accessible because the object itself was passed as a reference to the function. 
+
+4) What statement do you need to add to ensure that the strncpy(...) function executes correctly?
+The cstring c++ library needs to be added #include <cstring> at the top so that the strncpy function is made available to the program
+
+5) Explain what you have learned in this workshop.
+
+I learned how to use the constructor in order to validate and initialize invalid properties to safe empty states
+
+Quiz 4 reflection:
+
+I didn't read the correct chapter for the week's quiz.

@@ -8,17 +8,14 @@ namespace sict
 {
 	Fraction::Fraction(void)
 	{
-		// Set object to empty state
 		m_numerator = 0;
 		m_denominator = 0;
 	}
 	Fraction::Fraction(int n, int d)
 	{
-		// receive numerator and denominator
-		// validate data - numerator: not-negative, denominator: positive value
-		// if invalid, set to empty state
+		bool valid = n >= 0 && d > 0;
 
-		if (!isNegative(n) && !isNegative(d))
+		if (valid)
 		{
 			m_numerator = n;
 			m_denominator = d;
@@ -31,26 +28,18 @@ namespace sict
 	}
 	int Fraction::max(void) const
 	{
-		// returns the greater number between the numerator and the denominator
 		return std::max(m_numerator, m_denominator);
 	}
 	int Fraction::min(void) const
 	{
-		// returns the lesser number between the numerator and the denominator
 		return std::min(m_numerator, m_denominator);
 	}
 	void Fraction::reduce(void)
 	{
-		if (m_numerator != m_denominator)
-		{
-			m_numerator /= gcd();
-			m_denominator = m_denominator/gcd();
-		}
-		else
-		{
-			m_numerator = 1;
-			m_denominator = 1;
-		}
+		int greatestCommonDivisor = gcd();
+
+		m_numerator /= greatestCommonDivisor;
+		m_denominator /= greatestCommonDivisor;
 	}
 	int Fraction::gcd(void) const
 	{
@@ -68,29 +57,26 @@ namespace sict
 	}
 	void Fraction::display(void) const
 	{
-		// DEFAULT output: NUMERATOR/DENOMINATOR
-		// return only NUMERATOR if denominator is 1
-		// if SES, return "no fraction stored"
-		
 		if (isEmpty())
 		{
-			cout << "no fraction stored" << endl;
+			cout << "no fraction stored";
 		}
 		else if (m_denominator == 1)
 		{
-			cout << m_numerator << endl;
+			cout << m_numerator;
 		}
 		else
 		{
-			cout << m_numerator << "/" << m_denominator << endl;
+			cout << m_numerator << "/" << m_denominator;
 		}
-		
 	}
-	// Fraction::Fraction operator+(const Fraction& rhs) const
-	// {
-	// 	// *this - left hand side
-	// 	// rhs - right hand side
-	// 	// if not empty, return added fraction that is reduced
-	// 	// if SES, return empty fraction object
-	// } 
+	Fraction Fraction::operator+(const Fraction& rhs) const
+	{
+		Fraction temp(1, -1);
+		if (isEmpty() == false && rhs.isEmpty() == false){
+			temp.m_numerator = ((m_numerator*rhs.m_denominator) + (rhs.m_numerator*m_denominator));
+			temp.m_denominator =(m_denominator*rhs.m_denominator);
+		}
+		return temp;
+	} 
 }

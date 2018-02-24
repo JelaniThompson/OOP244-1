@@ -49,11 +49,11 @@ int main() {
     cout << endl;
 
     cout << "a + b equals ";
-    // (a + b).display();
+    (a + b).display();
     cout << endl;
 
     cout << "b + d equals ";
-    // (b + d).display();
+    (b + d).display();
     cout << endl;
    
     return 0;

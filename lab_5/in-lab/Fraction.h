@@ -17,7 +17,7 @@ namespace sict
 		bool isEmpty(void) const;
 		bool isNegative(int x) const;
 		void display(void) const;
-		// Fraction operator+(const Fraction& rhs) const; 
+		Fraction operator+(const Fraction& rhs) const; 
 	};
 }
 

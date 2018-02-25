@@ -143,12 +143,11 @@ namespace sict
 		return validFractions && inEqualFractions;
 	}
 
-	Fraction& Fraction::operator+=(const Fraction& rhs) const
+	Fraction& Fraction::operator+=(const Fraction& rhs)
 	{
-		bool validFractions = isValid(*this) && isValid(rhs);
-		Fraction temp;
-		Fraction& tmp = temp;
-		tmp = *this + rhs;
-		return tmp;
+		m_numerator = m_numerator * rhs.m_denominator + m_denominator * rhs.m_numerator;
+		m_denominator = m_denominator * rhs.m_denominator;
+		reduce();
+		return *this;
 	}
 }

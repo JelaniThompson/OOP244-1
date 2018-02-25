@@ -30,7 +30,7 @@ namespace sict
         Fraction operator*(const Fraction& rhs) const;
         bool operator==(const Fraction& rhs) const;
         bool operator!=(const Fraction& rhs) const;
-        Fraction& operator+=(const Fraction& rhs) const;        
+		Fraction& operator+=(const Fraction& rhs);        
 	};
 }
 

@@ -16,8 +16,7 @@ namespace sict
 
 	bool Contact::isEmpty() const
 	{
-		bool empty = m_name[0] == '\0' && m_phoneNumbers == nullptr && m_noOfPhoneNumbers = 0;
-		return empty;
+		return (m_name[0] == '\0' && m_phoneNumbers == nullptr && m_noOfPhoneNumbers == 0) ? true : false;
 	}
 
 	// Set to safe empty states
@@ -59,7 +58,9 @@ namespace sict
 		else
 		{
 			// Call the first constructor
-			*this = Contact();
+			m_name[0] = '\0';
+			m_phoneNumbers = nullptr;
+			m_noOfPhoneNumbers = 0;
 		}
 		
 	}

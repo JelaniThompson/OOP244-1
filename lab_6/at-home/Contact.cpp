@@ -16,7 +16,7 @@ namespace sict
 
 	bool Contact::isEmpty() const
 	{
-		return (m_name[0] == '\0' && m_phoneNumbers == nullptr && m_noOfPhoneNumbers == 0) ? true : false;
+		return m_name[0] == '\0';
 	}
 
 	// Set to safe empty states
@@ -31,8 +31,8 @@ namespace sict
 	Contact::Contact(const char* name, const long long* phoneNumbers, const int noOfPhoneNumbers)
 	{
 		// Check if the incoming name is null or empty
-        bool v_Name = (name == nullptr || name[0] == '\0') ? false : true;
-        
+        bool v_Name = name != nullptr && strlen(name) != 0;
+
 		if (v_Name)
 		{
 			// Copy the passed data into m_name
@@ -54,16 +54,16 @@ namespace sict
 					// Copy the valid phoneNumber into the m_phoneNumbers
 					m_phoneNumbers[m_noOfPhoneNumbers - 1] = phoneNumbers[i];
 				}
+                else
+                {
+                    m_phoneNumbers[i] = 0;
+                }
 			}
 		}
 		else
 		{
-			// Call the first constructor
-			m_name[0] = '\0';
-			m_phoneNumbers = nullptr;
-			m_noOfPhoneNumbers = 0;
+			*this = Contact();
 		}
-		
 	}
 
 	void Contact::display() const{
@@ -128,6 +128,7 @@ namespace sict
                 m_phoneNumbers = nullptr;
             }
         }
+
         return *this;
     }
 

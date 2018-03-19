@@ -31,7 +31,7 @@ namespace sict
 	Contact::Contact(const char* name, const long long* phoneNumbers, const int noOfPhoneNumbers)
 	{
 		// Check if the incoming name is null or empty
-		bool isNotEmptyOrNull = name != nullptr && name[0] != '\0' && phoneNumbers != nullptr && noOfPhoneNumbers > 0;
+		bool isNotEmptyOrNull = name != nullptr && name[0] != '\0';
 		if (isNotEmptyOrNull)
 		{
 			// Copy the passed data into m_name

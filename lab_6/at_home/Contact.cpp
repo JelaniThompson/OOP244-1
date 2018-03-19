@@ -1,177 +1,158 @@
-// Workshop 6 - Class with a Resource
-// Contact.cpp
-// Lean Junio
-// 2018/03/17
-
-// ignore warning message
-#define _CRT_SECURE_NO_WARNINGS
-
-
-//insert header files
 #include <iostream>
 #include <cstring>
 #include "Contact.h"
 
-
-//using namespace
 using namespace std;
 
-
-//declare the namespace sict
-namespace sict {
-
-	//declare the constructor to initialize members
-	Contact::Contact() {
-		strncpy(memberName, "", MAX_CHARACTER_LENGTH);
-		memberName[MAX_CHARACTER_LENGTH - 1] = '\0';
-		phoneNumber = nullptr;
-		phoneNumberNumber = 0;
+namespace sict
+{
+	// Checks if the passed phoneNumber is valid
+	bool Contact::isValidPhoneNumber(const long long phoneNumber)
+	{
+		string phoneNumberString = to_string(phoneNumber);
+		bool invalid = phoneNumber <= 0 || phoneNumberString.length() < 11 || phoneNumberString.length() > 12 || phoneNumberString[phoneNumberString.length() - 7] == '0' || phoneNumberString[phoneNumberString.length() - 10] == '0';
+		return !invalid;
 	}
 
-	//overload constructor with 3 parameters
-	Contact::Contact(const char* personName, long long* pNumber, int noOfNumber) {
+	bool Contact::isEmpty() const
+	{
+		return m_name[0] == '\0';
+	}
 
-		// Check if the person name is empty
-		if (personName != nullptr && strcmp(personName, "") != 0) {
-			strncpy(memberName, personName, MAX_CHARACTER_LENGTH);
-			memberName[MAX_CHARACTER_LENGTH - 1] = '\0';
-			phoneNumberNumber = 0;
+	// Set to safe empty states
+	Contact::Contact()
+	{
+		m_name[0] = '\0';
+		m_noOfPhoneNumbers = 0;
+		m_phoneNumbers = nullptr;
+	}
 
-			if (pNumber != nullptr) {
+	// Gets the data when the object is created: name, phoneNumbers, number of phoneNumbers in the array
+	Contact::Contact(const char* name, const long long* phoneNumbers, const int noOfPhoneNumbers)
+	{
+		// Check if the incoming name is null or empty
+        bool v_Name = name != nullptr && strlen(name) != 0;
 
-				//allocating dynamic memory of array
-				phoneNumber = new long long[noOfNumber];
+		if (v_Name)
+		{
+			// Copy the passed data into m_name
+			strcpy(m_name, name);
 
-				for (int i = 0; i < noOfNumber; i++) {
+			// Allocate new memory
+			m_phoneNumbers = new long long[noOfPhoneNumbers];
+			m_noOfPhoneNumbers = 0;
 
-					// similar to ipc workshop of finding phone numbers
-					int areaCode = (pNumber[i] / 10000000) % 1000;
-					if (areaCode == 416) {
-						phoneNumber[phoneNumberNumber] = pNumber[i];
-						phoneNumberNumber++;
-					}
+			// Check for valid numbers
+			for	(int i = 0; i < noOfPhoneNumbers; i++)
+			{
+				// If the current phoneNumbers element is valid
+				if (isValidPhoneNumber(phoneNumbers[i]))
+				{
+					// increase the m_noOfPhoneNumbers by 1
+					m_noOfPhoneNumbers += 1;
+
+					// Copy the valid phoneNumber into the m_phoneNumbers
+					m_phoneNumbers[m_noOfPhoneNumbers - 1] = phoneNumbers[i];
 				}
-			}
-			else {
-				phoneNumber = nullptr;
+                else
+                {
+                    m_phoneNumbers[i] = 0;
+                }
 			}
 		}
-
-		//if the condition doesn't match, return to the default constructor
-		else {
-			phoneNumber = nullptr;
+		else
+		{
 			*this = Contact();
 		}
 	}
 
-	//deallocate of phonnumber array
-	Contact::~Contact() {
-		delete[] phoneNumber;
-	}
-	bool Contact::isEmpty() const {
-		bool check = false;
-		if (strcmp(memberName, "") == 0 && phoneNumber == nullptr && phoneNumberNumber == 0) {
-			check = true;
+	void Contact::display() const{
+		string countryCode;
+		string areaCode;
+		string numberCode1;
+		string numberCode2;
+		string phoneNumberString;
+		int phoneNumberStringLength;
+		if (!isEmpty()) {
+		
+			cout << m_name << endl;
+			for (int phone = 0; phone < m_noOfPhoneNumbers; phone++) {
+				phoneNumberString = to_string(m_phoneNumbers[phone]);
+				phoneNumberStringLength = phoneNumberString.length();
+				countryCode = phoneNumberString.substr(0, (phoneNumberStringLength - (areaCodeLength + numberLength)));
+				areaCode = phoneNumberString.substr(phoneNumberStringLength - (areaCodeLength + numberLength), areaCodeLength);
+				numberCode1 = phoneNumberString.substr(phoneNumberStringLength - numberLength, numberCode1Length);
+				numberCode2 = phoneNumberString.substr(phoneNumberStringLength - numberCode2Length, numberCode2Length);
+				
+				cout << "(+" + countryCode + ")" + " " + areaCode + " " + numberCode1 + "-" + numberCode2 << endl;			
+			}
 		}
-		return check;
-	}
-
-	// display function
-	void Contact::display() const {
-
-		long long fullPnumber;
-		int count = 0;
-
-		//No record, then show this message
-		if (isEmpty()) {
+		else 
+		{
 			cout << "Empty contact!" << endl;
 		}
+    }
 
-		else {
-			cout << memberName << endl;
-
-			while (count != phoneNumberNumber) {
-				fullPnumber = phoneNumber[count];
-				cout << "(+" << (fullPnumber / 10000000000) << ") " << ((fullPnumber / 10000000) % 1000) << " " << ((fullPnumber % 10000000) / 10000) << "-" << (fullPnumber % 10000) << endl;
-				count++;
-			}
+	Contact::~Contact()
+	{
+		// Deallocate the m_phoneNumbers
+		if (m_phoneNumbers != nullptr)
+		{
+			delete[] m_phoneNumbers;
+			m_phoneNumbers = nullptr;
 		}
 	}
 
+    Contact::Contact(const Contact& other)
+    {
+        m_phoneNumbers = nullptr;
+        *this = other;
+    }
 
-	//  copy constructor 
-	Contact::Contact(const Contact& cpyconstructor) {
+    Contact& Contact::operator=(const Contact& rhs)
+    {
+        if (this != &rhs) 
+        {
+            strcpy(m_name, rhs.m_name);
+            m_noOfPhoneNumbers = rhs.m_noOfPhoneNumbers;
+            delete[] m_phoneNumbers;
 
-		phoneNumber = nullptr;
+            if (rhs.m_phoneNumbers != nullptr) {
+                m_phoneNumbers = new long long[m_noOfPhoneNumbers];
+                for (int i = 0; i < m_noOfPhoneNumbers; i++) {
+                m_phoneNumbers[i] = rhs.m_phoneNumbers[i];
+                }
+            }
+            else 
+            {
+                m_phoneNumbers = nullptr;
+            }
+        }
 
-		// Using the same code again for copy assignment operator
+        return *this;
+    }
 
-		*this = cpyconstructor;
-	}
+    Contact& Contact::operator+=(long long phoneNumber)
+    {
+        bool valid = isValidPhoneNumber(phoneNumber);
 
+        if (valid)
+        {
+            m_noOfPhoneNumbers++;
+            
+            long long* t_PhoneNumbers = new long long[m_noOfPhoneNumbers];
 
-	// cpy assignment operator
-	Contact& Contact::operator=(const Contact& tempObject2) {
+            for (int i = 0; i < m_noOfPhoneNumbers - 1; ++i)
+            {
+                t_PhoneNumbers[i] = m_phoneNumbers[i];
+            }
 
-		// To save the data, I need to check if the object is the same or address
-		if (this != &tempObject2) {
+            t_PhoneNumbers[m_noOfPhoneNumbers - 1] = phoneNumber;
+            delete[] m_phoneNumbers;
+            m_phoneNumbers = t_PhoneNumbers;
+        }
 
-			// initialize the instance variables
-			strncpy(memberName, tempObject2.memberName, MAX_CHARACTER_LENGTH);
-			memberName[MAX_CHARACTER_LENGTH - 1] = '\0';
-			phoneNumberNumber = tempObject2.phoneNumberNumber;
-
-			//deallocate the memory of phoneNumber
-			delete[] phoneNumber;
-			if (tempObject2.phoneNumber != nullptr) {
-				phoneNumber = new long long[phoneNumberNumber];
-
-				// Set the object to given object which is tempObject2 
-				int i = 0;
-				while (i < phoneNumberNumber) {
-					phoneNumber[i] = tempObject2.phoneNumber[i];
-					i++;
-				}
-			}
-
-			else {
-				phoneNumber = nullptr;
-			}
-		}
-
-		return *this;
-	}
-
-	// +=operator
-	Contact& Contact::operator+=(long long longPnumber) {
-
-		// check for phoneNumber is not empty
-		if (phoneNumber != nullptr) {
-
-			//increase the size of new array for allocation memory(pointer)
-			long long* contact = new long long[phoneNumberNumber + 1];
-			for (int i = 0; i < phoneNumberNumber; i++) {
-				contact[i] = phoneNumber[i];
-			}
-
-			// put one data to new array(ponter)
-			contact[phoneNumberNumber] = longPnumber;
-			phoneNumberNumber++;
-
-			//dealocate the memory
-			delete[] phoneNumber;
-
-			//set the array data into new array
-			phoneNumber = contact;
-		}
-		else {
-			//allocating the new dynamic memory if phoneNumber is nullptr with one more increased size of array(pointer)
-			phoneNumber = new long long[phoneNumberNumber + 1];
-			phoneNumber[phoneNumberNumber] = longPnumber;
-			phoneNumberNumber++;
-		}
-
-		return *this;
-	}
+        return *this;
+    }
 
 }

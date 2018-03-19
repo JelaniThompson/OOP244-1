@@ -1,52 +1,31 @@
-// Workshop 6 - Class with a Resource
-// Contact.h
-// Lean Junio
-// 2018/03/17
-
-// header file guard
 #ifndef SICT_CONTACT_H
 #define SICT_CONTACT_H
 
-// create namespace
-namespace sict {
+namespace sict 
+{
+	const int areaCodeLength = 3;
+	const int numberLength = 7;
+	const int numberCode1Length = 3;
+	const int numberCode2Length = 4;
 
-	//declare the length of chracter for array
-	const int MAX_CHARACTER_LENGTH = 20;
-
-	//declare the class of contact
-	class Contact {
-
-		//declare the instance members
-		char memberName[MAX_CHARACTER_LENGTH];
-		long long* phoneNumber;
-		int phoneNumberNumber;
-
-		//declare the public functions with constructor and destructor
+	class Contact
+	{
+		char m_name[21];
+		long long* m_phoneNumbers;
+		int m_noOfPhoneNumbers;
 	public:
-
-		// default constructor
 		Contact();
-
-		// overload cunstructor with 3 parameters
-		Contact(const char* personName, long long* pNumbers, int nOfnumbers);
-
-		// destructor
+		Contact(const char*, const long long*, const int);
 		~Contact();
-
-		// display function
 		void display() const;
-
-		// empty functio for the safety
 		bool isEmpty() const;
+	public:
+		Contact(const Contact& other);
+		Contact& operator=(const Contact& rhs);
+        Contact& operator+=(long long phoneNumber);
 
-		//copy constructor
-		Contact(const Contact& tempObject);
-
-
-		Contact& operator=(const Contact& tempObject2);
-
-		// overloading += operator
-		Contact& operator+=(long long);
+	private:
+		bool isValidPhoneNumber(const long long);
 	};
 }
 #endif

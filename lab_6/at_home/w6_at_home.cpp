@@ -2,7 +2,6 @@
 // w6_at_home.cpp
 // Chris Szalwinski
 // 2017/06/14
-
 #include <iostream>
 #include "Contact.h"
 

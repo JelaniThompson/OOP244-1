@@ -15,9 +15,6 @@ namespace AMA
     {
         char* m_MessageAddress;
 
-        // Copies the message
-        void copyMessage(const char* p_Message);
-
     public:
         // Receives the ADDRESS of a null terminated string that holds an error message
         // If the address is NULLPTR, this function puts the object in a safe empty state
@@ -48,9 +45,6 @@ namespace AMA
 
         // This query returns the address of the message stored in the current object
         const char* message() const;
-
-        // Return the address of the current object
-        string getAddress() const;
     };
 
     // Sends an ErrorState message

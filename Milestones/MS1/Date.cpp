@@ -10,6 +10,7 @@
 // Name               Date                 Reason
 /////////////////////////////////////////////////////////////////
 #include <iostream>
+#include<iomanip>
 #include "Date.h"
 using namespace std;
 
@@ -26,9 +27,9 @@ namespace AMA
 	}
 
 	// Checks if the date is valid and saves the data if it is
-	Date::Date(int month, int day, int year)
+	Date::Date(int year, int month, int day)
 	{
-		bool yearValid = year >= min_year || year <= max_year;
+		bool yearValid = (year >= min_year || year <= max_year) && year > 0;
 		int daysInMonth = mdays(month, year);
 		bool daysInMonthValid = daysInMonth != 13 && day <= daysInMonth;
 
@@ -47,17 +48,23 @@ namespace AMA
 		}
 	}
 	
+	// Sets the error state variable to one of the values listed
+	void Date::errCode(int errorCode)
+	{
+		m_errorState = errorCode;
+	}
+	// Return the error state as an error code value
+	int Date::errCode() const
+	{
+		return m_errorState;
+	}
+
 	// Retun true if m_errorState != NO_ERROR
 	bool Date::bad() const
 	{
 		return m_errorState == NO_ERROR;
 	}
 
-	// Return the error state as an error code value
-	int Date::errCode() const
-	{
-		return m_errorState;
-	}
 
 	// compare if rhs == this
 	bool Date::operator==(const Date& rhs) const
@@ -101,7 +108,7 @@ namespace AMA
 	}
 
 	// check if this > rhs
-	bool Date::operator<(const Date& rhs) const
+	bool Date::operator>(const Date& rhs) const
 	{
 		return !(*this < rhs);
 	}
@@ -119,7 +126,7 @@ namespace AMA
 	}
 
 	// works with an istream object to read a date from the console
-	istream& Date::read(istream& istr)
+	std::istream& Date::read(std::istream& istr)
 	{
 		char symbol;
 		istr.clear();
@@ -151,7 +158,7 @@ namespace AMA
 	}
 
 	// Works with an ostream object to print a date to the console
-	ostream& Date::write(ostream& ostr) const
+	std::ostream& Date::write(std::ostream& ostr) const
 	{
 		char symbol = '/';
 		// For year
@@ -186,13 +193,12 @@ namespace AMA
 		return days[month] + int((month == 1) * ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
 	}
 
-	istream& operator>>(istream& istr, Date& s)
+	std::istream& operator>>(std::istream& istr, Date& s)
 	{
-		s.read(istr);
-		return istr;
+		return s.read(istr);
 	}
 
-	ostream& operator<<(ostream& ostr, Date& s)
+	std::ostream& operator<<(std::ostream& ostr, Date& k)
 	{
 		return k.write(ostr);
 	}

@@ -32,19 +32,19 @@ namespace AMA
 
 	public:
 		Date();
-		Date(int month, int day, int year);
-		int errCode() const;
-		bool bad() const;
+		Date(int year, int month, int day);
+		int errCode(void) const;
+		bool bad(void) const;
 		bool operator==(const Date& rhs) const;
 		bool operator!=(const Date& rhs) const;
 		bool operator<(const Date& rhs) const;
 		bool operator>(const Date& rhs) const;
 		bool operator<=(const Date& rhs) const;
 		bool operator>=(const Date& rhs) const;
-		istream& read(istream& istr);
-		ostream& write(ostream& ostr) const;
+		std::istream& read(std::istream& istr);
+		std::ostream& write(std::ostream& ostr) const;
 	};
-		ostream& operator<<(ostream& ostr, Date& s);
-		istream& operator>>(istream& istr, Date& k);		
+		std::ostream& operator<<(std::ostream& ostr, Date&);
+		std::istream& operator>>(std::istream& istr, Date&);		
 }
 #endif

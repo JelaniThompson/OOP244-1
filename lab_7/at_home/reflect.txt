@@ -8,7 +8,7 @@ While "Hero" cannot be seen in SuperHero.cpp file, it can be seen in SuperHero.h
 
 3. The program prints out “Ancient Battle!” when 2 Heroes fight. It prints out “Super Fight!” when 2 SuperHeroes fight. When you tried to make a Hero fight a SuperHero , what did it print out?
 
-The program printed out "Superfight" because at this stage of the program, the * operator that is being used is the one from inside the Hero class, not the one from the SuperHero class.
+The program printed out "Ancient Battle!" because at this stage of the program, the * operator that is being used is the one from inside the Hero class, not the one from the SuperHero class.
 
 4. True or False: are the following definitions for main valid?
 int main() {

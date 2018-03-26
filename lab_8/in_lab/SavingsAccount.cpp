@@ -13,9 +13,11 @@ namespace sict {
 
     void SavingsAccount::display(std::ostream& os) const {
         os << "Account Type: Savings" << std::endl;
-		os.precision(2);
+        os.unsetf(std::ios::floatfield);
+        os.precision(2);
+        os.setf(std::ios::fixed, std::ios::floatfield);
 		os << "Balance: $" << balance() << std::endl;
-		os << "Interest Rate (%): " << m_Interest << std::endl;
+		os << "Interest Rate (%): " << m_Interest * 100 << std::endl;
     }
     
 }

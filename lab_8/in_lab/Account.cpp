@@ -25,10 +25,6 @@ namespace sict {
         }
     }
 
-    void Account::setBalance(double amountToSet) {
-        this->m_Balance = amountToSet;
-    }
-
     double Account::balance() const {
         return m_Balance;
     }

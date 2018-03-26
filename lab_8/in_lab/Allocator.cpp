@@ -14,9 +14,7 @@ namespace sict {
 	// If the string does not identify a type that is available, the function returns nullptr
 	iAccount* CreateAccount(const char* type, double initBalance) {
 		iAccount *p = nullptr;
-		if (type[0] == 'S') 
-			p = new SavingsAccount(initBalance, interest);
-
+		if (type[0] == 'S') p = new SavingsAccount(initBalance, interest);
 		return p;
 	}
 }

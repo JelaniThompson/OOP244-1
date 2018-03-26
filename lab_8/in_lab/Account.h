@@ -24,8 +24,9 @@ namespace sict {
 
 		// TODO: debit subtracts a +ve amount from the balance
 		bool debit(double amountToSubtract);
-
-		void setBalance(double amountToSet);
 	};
+
+	// TODO: add prototype for Allocator function
+	iAccount* CreateAccount(const char* type, double initBalance);
 }
 #endif

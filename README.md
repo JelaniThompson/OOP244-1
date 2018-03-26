@@ -3,3 +3,4 @@
 Contained are:
 
 - Workshops
+- Milestones

@@ -153,7 +153,7 @@ namespace AMA
 			errCode(DAY_ERROR);
 		}
 
-		istr.clear();
+		//istr.clear();
 		return istr;
 	}
 

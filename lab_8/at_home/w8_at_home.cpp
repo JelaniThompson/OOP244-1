@@ -68,4 +68,6 @@ int main () {
 	display("Angelina", Angelina, 2);
 
 	close(Angelina, 2);
+
+	return 0;
 }

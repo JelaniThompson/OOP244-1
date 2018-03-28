@@ -1,0 +1,20 @@
+1. What is the difference between an abstract base class and a concrete class?
+
+Abstract base classes are classes in which one or more methods within that class is declared but not defined (an example would be a virtual function where a method is defined in the base class but declared in its derived class).
+
+A concrete class on the other hand is a class in which the method(s) exists within the class itself without the "help" of a derived class.
+
+2. Identify the functions that shadow functions of the same name in your solution?
+
+ChequingAccount::credit() shadows Account::credit() in the main() function,
+ChequingAccount::debit() shadows Account::debit() in the main() function,
+ChequingAccount::monthEnd() shadows SavingsAccount::monthEnd() in the main() function,
+ and ChequingAccount::display() shadows SavingsAccount::display().
+
+3. Explain what have you learned in this workshop.
+
+I have learned to properly derive classes from base classes and how to use the methods defined in an abstract class within the derived class
+
+Quiz 8 Reflection:
+
+There was no quiz on the week of Workshop 8.

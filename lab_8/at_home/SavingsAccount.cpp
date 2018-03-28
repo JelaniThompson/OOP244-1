@@ -12,7 +12,7 @@ namespace sict {
     }
 
     void SavingsAccount::display(std::ostream& os) const {
-        os << "Account Type: Savings" << std::endl;
+        os << "Account type: Savings" << std::endl;
         os.unsetf(std::ios::floatfield);
         os.precision(2);
         os.setf(std::ios::fixed, std::ios::floatfield);

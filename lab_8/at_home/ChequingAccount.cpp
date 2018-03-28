@@ -43,7 +43,7 @@ namespace sict {
 	// display inserts account information into ostream os
 	//
 	void ChequingAccount::display(std::ostream& os) const {
-		os << "Account Type: Chequing" << std::endl;
+		os << "Account type: Chequing" << std::endl;
 		os.unsetf(std::ios::floatfield);
 		os.precision(2);
 		os.setf(std::ios::fixed, std::ios::floatfield);

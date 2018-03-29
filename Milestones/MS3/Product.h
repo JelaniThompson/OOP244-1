@@ -41,7 +41,7 @@ namespace AMA
 		bool m_Taxable;
 
 		// Holds the error state of the Product object
-		ErrorState er;
+		ErrorState m_er;
 		
 	protected:
 		// Receives the address that holds the name of the product
@@ -59,7 +59,7 @@ namespace AMA
 
 		// Returns the price of a single item of the product plus any tax that applies to the product
 		// 
-		// 1. Return price of the item += tax
+		// 1. Return price of the item + tax
 		double cost() const;
 
 		// Receives the address of a string holding an error message

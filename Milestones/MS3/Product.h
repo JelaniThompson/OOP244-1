@@ -16,15 +16,33 @@ namespace AMA
 	class Product
 	{
 	private:
+		// A character that indicates the type of the product - for use in the file record
 		char m_ProductType;
+
+		// A character array that holds the product's SKU
 		char m_ProductSKU[MAX_SKU];
+
+		// A character array that describes the product's unit
 		char m_ProductUnit[MAX_UNIT_DESCRIPTOR];
+
+		// A pointer that holds the address of a string in dynamic memory containing the name of the product
 		char* m_UnitAddress;
+
+		// Product quantity currently on hand
 		int m_ProductQuantity;
+
+		// Quantity of the product needed
 		int m_ProductNeeded;
+		
+		// Holds the price of a single unit before tax is applied
 		double m_PriceBeforeTax;
+
+		// Says if the product is taxable
 		bool m_Taxable;
+
+		// Holds the error state of the Product object
 		ErrorState er;
+		
 	protected:
 		// Receives the address that holds the name of the product
 		// 
@@ -56,7 +74,6 @@ namespace AMA
 		bool isClear() const;
 	
 	public:
-
 		// Receives an optional character that identifies the product type, the default value is = 'N'
 		// 
 		// 1. Store the character in an instance variable

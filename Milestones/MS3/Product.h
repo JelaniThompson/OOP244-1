@@ -6,6 +6,10 @@
 
 namespace AMA
 {
+	const int max_sku_length = 7;
+	const int max_unit_length = 10;
+	const int max_name_length = 75;
+
 	// Concrete class that encapsulates the general information for an AMA product
 	// Uses the ErrorState object
 	const int MAX_SKU = 7;
@@ -84,7 +88,7 @@ namespace AMA
 		// 
 		// Allocates enough memory to hold the name of the product
 		// A protected function has been declared to perform this task
-		Product(char* sku, char* productName, char* productUnit, int quantity = 0, bool taxable = true, double priceBeforeTax = 0.0, int qtyOfProductNeeded = 0);
+		Product(const char* sku, const char* productName, const char* productUnit, int quantity = 0, bool taxable = true, double priceBeforeTax = 0.0, int qtyOfProductNeeded = 0);
 
 		// Receives a reference to a Product obect 
 		// Copies the object referenced to the current object

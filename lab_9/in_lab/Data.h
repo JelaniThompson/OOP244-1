@@ -1,6 +1,7 @@
 // Author: Lean Junio
 // File: Data.h
 // Description: Header file from Data
+#include <cstring>
 #include <iostream>
 
 namespace sict {
@@ -112,12 +113,11 @@ namespace sict {
 		// Set Width and justify to the right
 		std::cout.width(20);
 		std::cout << std::right << name;
-		std::cout.width(20);
 
 		for(int i = 0; i < n; ++i)
 		{
-			std::cout << data[i] << " ";
 			std::cout.width(15);
+			std::cout << data[i];
 		}
 
 		std::cout << "\n";

@@ -1,0 +1,10 @@
+
+In line number 4 of your output:
+The output should be:
+                Year           2000           2001           2002           2003           2004
+But your output is: 
+                Year           2000            2001            2002            2003            2004 
+                                              ^
+----------------------------------------------|
+Professor's character ASCII code: hex(32), dec(50)
+un-matched character ASCII code: hex(20), dec(32)

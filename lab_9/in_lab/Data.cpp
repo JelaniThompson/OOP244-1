@@ -98,7 +98,7 @@ namespace sict {
 		cout << "Population change from " << year[0] << " to " << year[n - 1] << " is ";
 		cout.precision(2);
 		cout.setf(ios::fixed);
-		cout << static_cast<double>(populationDiff) / LARGEST_NUMBER << " million" << endl;
+		cout << static_cast<double>(populationDiff)/1000000 << " million" << endl;
 
 		// Q2. print whether violent crime rate has gone up or down between 2000 and 2005
 		auto violentCrimeStart = violentCrime[0];

@@ -1,0 +1,12 @@
+﻿  Product.cpp
+  MyProduct.cpp
+c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\myproduct.cpp(34): error C2039: 'sku': is not a member of 'AMA::Product'
+  c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\product.h(21): note: see declaration of 'AMA::Product'
+c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\myproduct.cpp(36): error C2039: 'unit': is not a member of 'AMA::Product'
+  c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\product.h(21): note: see declaration of 'AMA::Product'
+c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\myproduct.cpp(37): error C2039: 'taxed': is not a member of 'AMA::Product'
+  c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\product.h(21): note: see declaration of 'AMA::Product'
+c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\myproduct.cpp(38): error C2039: 'price': is not a member of 'AMA::Product'
+  c:\users\leanj\documents\seneca\oop244\labs\milestones\ms3\product.h(21): note: see declaration of 'AMA::Product'
+  ms3_tester.cpp
+  Generating Code...

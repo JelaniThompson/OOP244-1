@@ -86,6 +86,9 @@
     <ClInclude Include="MyProduct.h" />
     <ClInclude Include="Product.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\.gitignore" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

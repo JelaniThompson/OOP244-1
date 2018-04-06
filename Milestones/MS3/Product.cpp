@@ -56,7 +56,7 @@ namespace AMA
 	{
 		return mp_Err.isClear();
 	}
-	Product::Product(char type = 'N')
+	Product::Product(char type)
 	{
 		mp_Pr_Type = type;
 		mp_Pr_Sku[0] = '\0';
@@ -83,6 +83,14 @@ namespace AMA
 	{
 		*this = other;
 	}
+
+	Product::~Product()
+	{
+		delete[] mp_Address_Pr_Name;
+		mp_Address_Pr_Name = nullptr;
+		mp_Err.clear();
+	}
+
 	Product & Product::operator=(const Product & other)
 	{
 		if (this != &other)
@@ -104,12 +112,6 @@ namespace AMA
 		return *this;
 	}
 
-	Product::~Product()
-	{
-		delete[] mp_Address_Pr_Name;
-		mp_Address_Pr_Name = nullptr;
-		mp_Err.clear();
-	}
 	std::fstream & Product::store(std::fstream & file, bool newLine) const
 	{
 		// inserts into the fstream object the character that identifies the product type as the first field in the record

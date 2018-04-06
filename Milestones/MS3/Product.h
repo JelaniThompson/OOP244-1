@@ -42,17 +42,17 @@ namespace AMA
 		void message(const char*);				// This function receives the address of a C-style null-terminated string holding an error message and stores that message in the ErrorState object
 		bool isClear() const;					// This query returns true if the ErrorState object is clear; false otherwise
 	public:	
-		Product(char type);						// This constructor optionally receives a character that identifies the product type. Default is N
+		Product(char type = 'N');				// This constructor optionally receives a character that identifies the product type. Default is N
 
 		// Saves the data into the object
-		Product(const char* sku, const char* address, const char * unit, int onHand, int needed, double beforeTax, bool taxable);
+		Product(const char* sku, const char* address, const char * unit, int onHand = 0, int needed = 0, double beforeTax = 0.0, bool taxable = true);
 
 		Product(const Product& other);			// This constructor receives an unmodifiable reference to a Product object and copies the object referenced to the current object
 		
+		~Product();								// This function deallocates any memory that has been dynamically allocated
+
 		// This operator receives an unmodifiable reference to a Product object and replaces the current object with a copy of the object referenced
 		Product& operator=(const Product & other);
-		
-		~Product();								// This function deallocates any memory that has been dynamically allocated
 
 		// This query receives a reference to an fstream object and an optional bool and returns a reference to the fstream object
 		std::fstream& store(std::fstream& file, bool newLine = true) const;
@@ -91,7 +91,6 @@ namespace AMA
 
 		// This modifier receives an integer identifying the number of units to be added to the Product and returns the updated number of units on hand
 		int operator+=(int unitsToBeAdded);
-
 
 	};
 		// This helper receives a reference to an ostream object and an unmodifiable reference to a Product object and returns a reference to the ostream object 

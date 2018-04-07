@@ -78,11 +78,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ErrorState.cpp" />
     <ClCompile Include="ms3_tester.cpp" />
     <ClCompile Include="MyProduct.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ErrorState.h" />
     <ClInclude Include="MyProduct.h" />
     <ClInclude Include="Product.h" />
   </ItemGroup>

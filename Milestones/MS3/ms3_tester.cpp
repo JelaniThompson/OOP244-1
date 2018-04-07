@@ -37,7 +37,7 @@ int main() {
 	cout << " Sku: 1234" << endl;
 	cout << " Name (no spaces): Blanket" << endl;
 	cout << " Unit: pair" << endl;
-	cout << " Taxed? (y/n): y" << endl;
+		cout << " Taxed? (y/n): y" << endl;
 	cout << " Price: 12.34" << endl;
 	cout << " Quantity on hand: 12" << endl;
 	cout << " Quantity needed: 23" << endl;

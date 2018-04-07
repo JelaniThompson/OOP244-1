@@ -11,29 +11,27 @@ using namespace AMA;
 
 namespace AMA
 {
-	// Safe Empty State
 	Product::Product(char type)
 	{
-		this->mp_Pr_Type = type;
-		this->mp_Pr_Sku[0] = '\0';
-		this->mp_Pr_Unit[0] = '\0';
-		this->mp_Address_Pr_Name = nullptr;
-		this->mp_Quantity_Pr_OnHand = 0;
-		this->mp_Quantity_Pr_Needed = 0;
-		this->mp_Price_Pr_SingleBeforeTax = 0.0;
-		this->mp_Pr_Taxable = false;
+		mp_Pr_Type = type;
+		mp_Pr_Sku[0] = '\0';
+		mp_Pr_Unit[0] = '\0';
+		mp_Address_Pr_Name = nullptr;
+		mp_Quantity_Pr_OnHand = 0;
+		mp_Quantity_Pr_Needed = 0;
+		mp_Price_Pr_SingleBeforeTax = 0.0;
+		mp_Pr_Taxable = false;
 	}
 
 	Product::Product(const char* sku, const char* address, const char* unit, int onHand, bool taxable, double beforeTax, int needed)
 	{
-		mp_Address_Pr_Name = nullptr;
-		*this = Product();
-
 		name(address);
 		strncpy(mp_Pr_Sku, sku, max_sku_length);
 		mp_Pr_Sku[max_sku_length] = '\0';
+
 		strncpy(mp_Pr_Unit, unit, max_unit_length);
 		mp_Pr_Unit[max_unit_length] = '\0';		
+
 		mp_Quantity_Pr_OnHand = onHand;
 		mp_Quantity_Pr_Needed = needed;
 		mp_Price_Pr_SingleBeforeTax = beforeTax;
@@ -45,11 +43,13 @@ namespace AMA
 	}
 	Product::Product(const Product & other)
 	{
-		int length = strlen(mp_Address_Pr_Name);
-
+		int length = strlen(other.mp_Address_Pr_Name);
+		
 		mp_Pr_Type = other.mp_Pr_Type;
-		strcpy(mp_Pr_Sku, other.mp_Pr_Sku);
-		strcpy(mp_Pr_Unit, other.mp_Pr_Unit);
+		strncpy(mp_Pr_Sku, other.mp_Pr_Sku, max_sku_length);
+		mp_Pr_Sku[max_sku_length] = '\0';
+		strncpy(mp_Pr_Unit, other.mp_Pr_Unit, max_unit_length);
+		mp_Pr_Unit[max_unit_length] = '\0';
 		mp_Quantity_Pr_OnHand = other.mp_Quantity_Pr_OnHand;
 		mp_Quantity_Pr_Needed = other.mp_Quantity_Pr_Needed;
 		mp_Price_Pr_SingleBeforeTax = other.mp_Price_Pr_SingleBeforeTax;
@@ -58,6 +58,7 @@ namespace AMA
 		if (other.mp_Address_Pr_Name != nullptr)
 		{
 			mp_Address_Pr_Name = new char[length];
+
 			for (int i = 0; i < length; ++i)
 			{
 				mp_Address_Pr_Name[i] = other.mp_Address_Pr_Name[i];
@@ -71,18 +72,21 @@ namespace AMA
 
 	void Product::name(const char *nameAddress)
 	{
-		delete[] mp_Address_Pr_Name;
-		mp_Address_Pr_Name = nullptr;
-
 		if (nameAddress != nullptr)
 		{
-			mp_Address_Pr_Name = new char[max_name_length + 1];
-			strncpy(mp_Address_Pr_Name, nameAddress, max_name_length);
-			mp_Address_Pr_Name[max_name_length] = '\0';
+			cout << "Content of nameAddress: " << nameAddress << endl;
+			int length = strlen(nameAddress);
+
+			mp_Address_Pr_Name = new char[length];
+			for (int i = 0; i < length; ++i)
+			{
+				mp_Address_Pr_Name[i] = nameAddress[i];
+			}
 		}
 	}
 	const char * Product::name() const
 	{
+		cout << "Content of mp_Address_Pr_Name: " << mp_Address_Pr_Name << endl;
 		return (mp_Address_Pr_Name[0] == '\0') ? nullptr : mp_Address_Pr_Name;
 	}
 	const char * Product::sku() const
@@ -105,7 +109,6 @@ namespace AMA
 	{
 		return (mp_Pr_Taxable) ? price() * (TAX_RATE + 1) : price();
 	}
-	// This function receives the address of a C-style null-terminated string holding an error message and stores that message in the ErrorState object
 	void Product::message(const char* addressError)
 	{
 		mp_Err.message(addressError);
@@ -128,38 +131,35 @@ namespace AMA
 			mp_Quantity_Pr_Needed = other.mp_Quantity_Pr_Needed;
 			mp_Price_Pr_SingleBeforeTax = other.mp_Price_Pr_SingleBeforeTax;
 			mp_Pr_Taxable = other.mp_Pr_Taxable;
-		
-			// Copy the error message from other to another
+			
 			delete[] mp_Address_Pr_Name;
-
-			// Allocate new dynamic memory
 			if (other.mp_Address_Pr_Name != nullptr)
 			{
-				mp_Address_Pr_Name = new char[max_name_length + 1];
-				strncpy(mp_Address_Pr_Name, other.mp_Address_Pr_Name, max_name_length);
-				mp_Address_Pr_Name[0] = '\0';
+				int length = strlen(other.mp_Address_Pr_Name);
+
+				mp_Address_Pr_Name = new char[length];
+				for (int i = 0; i < length; ++i)
+				{
+					mp_Address_Pr_Name[i] = other.mp_Address_Pr_Name[i];
+				}				
 			}
 			else
 			{
 				mp_Address_Pr_Name = nullptr;
 			}
 		}
+
 		return *this;
 	}
 
 	std::fstream & Product::store(std::fstream & file, bool newLine) const
 	{
 		file << mp_Pr_Type << ',' << mp_Pr_Sku << ',' << mp_Pr_Unit << ',' << mp_Address_Pr_Name << ',' << mp_Quantity_Pr_OnHand << "," << mp_Quantity_Pr_Needed << "," << mp_Price_Pr_SingleBeforeTax << "," << mp_Pr_Taxable << mp_Err;
-		
-		// if the bool parameter is true, inserts a newline at the end of the record
 		if (newLine) file << endl;
 		return file;
 	}
 	std::fstream & Product::load(std::fstream & file)
 	{
-		// extracts the fields for a single record from the fstream object
-		// creates a temporary object from the extracted field data
-		// copy assigns the temporary object to the current object
 		Product temp;
 
 		temp.mp_Address_Pr_Name = new char[MAX_CHAR_NAME + 1];
@@ -326,7 +326,6 @@ namespace AMA
 	}
 	std::ostream & operator<<(std::ostream & os, const Product & other)
 	{
-		// insert a Product record into the ostream
 		return other.write(os, true);
 
 	}

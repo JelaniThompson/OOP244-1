@@ -1,7 +1,2 @@
 ﻿  Product.cpp
-Product.obj : error LNK2019: unresolved external symbol "public: __thiscall AMA::ErrorState::ErrorState(char const *)" (??0ErrorState@AMA@@QAE@PBD@Z) referenced in function "public: __thiscall AMA::Product::Product(class AMA::Product const &)" (??0Product@AMA@@QAE@ABV01@@Z)
-Product.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall AMA::ErrorState::~ErrorState(void)" (??1ErrorState@AMA@@UAE@XZ) referenced in function __unwindfunclet$??0Product@AMA@@QAE@ABV01@@Z$0
-Product.obj : error LNK2019: unresolved external symbol "public: bool __thiscall AMA::ErrorState::isClear(void)const " (?isClear@ErrorState@AMA@@QBE_NXZ) referenced in function "protected: bool __thiscall AMA::Product::isClear(void)const " (?isClear@Product@AMA@@IBE_NXZ)
-Product.obj : error LNK2019: unresolved external symbol "public: void __thiscall AMA::ErrorState::message(char const *)" (?message@ErrorState@AMA@@QAEXPBD@Z) referenced in function "public: class AMA::Product & __thiscall AMA::Product::operator=(class AMA::Product const &)" (??4Product@AMA@@QAEAAV01@ABV01@@Z)
-Product.obj : error LNK2019: unresolved external symbol "public: char const * __thiscall AMA::ErrorState::message(void)const " (?message@ErrorState@AMA@@QBEPBDXZ) referenced in function "public: class AMA::Product & __thiscall AMA::Product::operator=(class AMA::Product const &)" (??4Product@AMA@@QAEAAV01@ABV01@@Z)
-C:\Users\leanj\Documents\Seneca\OOP244\Labs\Milestones\MS3\Debug\MS3.exe : fatal error LNK1120: 5 unresolved externals
+  MS3.vcxproj -> C:\Users\leanj\Documents\Seneca\OOP244\Labs\Milestones\MS3\Debug\MS3.exe

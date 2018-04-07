@@ -74,7 +74,7 @@ namespace AMA
 	{
 		if (nameAddress != nullptr)
 		{
-			cout << "Content of nameAddress: " << nameAddress << endl;
+			// cout << "Content of nameAddress: " << nameAddress << endl;
 			int length = strlen(nameAddress);
 
 			mp_Address_Pr_Name = new char[length];
@@ -86,7 +86,7 @@ namespace AMA
 	}
 	const char * Product::name() const
 	{
-		cout << "Content of mp_Address_Pr_Name: " << mp_Address_Pr_Name << endl;
+		// cout << "Content of mp_Address_Pr_Name: " << mp_Address_Pr_Name << endl;
 		return (mp_Address_Pr_Name[0] == '\0') ? nullptr : mp_Address_Pr_Name;
 	}
 	const char * Product::sku() const
@@ -125,6 +125,7 @@ namespace AMA
 			mp_Pr_Type = other.mp_Pr_Type;
 
 			strncpy(mp_Pr_Sku, other.sku(), max_sku_length);
+
 			strncpy(mp_Pr_Unit, other.unit(), max_unit_length);
 
 			mp_Quantity_Pr_OnHand = other.mp_Quantity_Pr_OnHand;

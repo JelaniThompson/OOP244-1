@@ -1,0 +1,91 @@
+Script started on Mon 19 Mar 2018 12:47:02 PM EDT
+cornel.barna@matrix:~/**********> ms3
+[38;5;9mBegin Testing the Program!
+--------------------------[0m
+
+Empty Product:
+       |                    |   0.00|   0|          |   0|
+u("4321", "Rice"):
+4321   |Rice                |   0.00|   0|          |   0|
+
+Please enter the following information:
+ Sku: 1234
+ Name (no spaces): Blanket
+ Unit: pair
+ Taxed? (y/n): y
+ Price: 12.34
+ Quantity on hand: 12
+ Quantity needed: 23
+
+Enter Product Info: 
+ Sku: 1234
+ Name (no spaces): Blanket
+ Unit: pair
+ Taxed? (y/n): y
+ Price: 12.34
+ Quantity on hand: 12
+ Quantity needed: 23
+
+Testing:
+ s.store(): 
+  s: 1234   |Blanket             |  13.94|  12|pair      |  23|
+ t.load(): 
+  t: 1234   |Blanket             |  13.94|  12|pair      |  23|
+ X(const X&): X v = s
+  v: 1234   |Blanket             |  13.94|  12|pair      |  23|
+  s: 1234   |Blanket             |  13.94|  12|pair      |  23|
+ X& operator=(const X&): u = t
+  t: 1234   |Blanket             |  13.94|  12|pair      |  23|
+  u: 1234   |Blanket             |  13.94|  12|pair      |  23|
+ bool operator==(const char*) const: OK
+ int operator+=(int): u += 100 
+  u: 1234   |Blanket             |  13.94|  12|pair      |  23|
+  u: 1234   |Blanket             |  13.94| 112|pair      |  23|
+ double operator+=(double&, const Product&) : 200 += u
+  ?:1761.75 = 1761.75
+
+Please enter the following information:
+ Sku: 1235
+ Name (no spaces): Jacket
+ Unit: n/a
+ Taxed? (y/n): n
+ Price: 12.35
+ Quantity on hand: 11
+ Quantity needed: 22
+
+Enter Product Info: 
+ Sku: 1235
+ Name (no spaces): Jacket
+ Unit: n/a
+ Taxed? (y/n): n
+ Price: 12.35
+ Quantity on hand: 11
+ Quantity needed: 22
+
+Testing:
+ s.store(): 
+  s: 1235   |Jacket              |  12.35|  11|n/a       |  22|
+ t.load(): 
+  t: 1235   |Jacket              |  13.96|  11|n/a       |  22|
+ X(const X&): X v = s
+  v: 1235   |Jacket              |  12.35|  11|n/a       |  22|
+  s: 1235   |Jacket              |  12.35|  11|n/a       |  22|
+ X& operator=(const X&): u = t
+  t: 1235   |Jacket              |  13.96|  11|n/a       |  22|
+  u: 1235   |Jacket              |  13.96|  11|n/a       |  22|
+ bool operator==(const char*) const: OK
+ int operator+=(int): u += 100 
+  u: 1235   |Jacket              |  13.96|  11|n/a       |  22|
+  u: 1235   |Jacket              |  13.96| 111|n/a       |  22|
+ double operator+=(double&, const Product&) : 200 += u
+  ?:1749.06 = 1749.06
+
+1235	Jacket	n/a	0	12.35	11	22
+----The End
+
+[38;5;9m------------------------
+End Testing the Program![0m
+cornel.barna@matrix:**********> exit
+exit
+
+Script done on Mon 19 Mar 2018 12:48:49 PM EDT

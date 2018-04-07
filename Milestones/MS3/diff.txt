@@ -1,0 +1,10 @@
+
+In line number 9 of your output:
+The output should be:
+4321   |Rice                |   0.00|   0|          |   0|
+But your output is: 
+4321   |Rice                |   0.00|   0|          |   1|
+                                                        ^
+--------------------------------------------------------|
+Professor's character ASCII code: hex(30), dec(48)
+un-matched character ASCII code: hex(31), dec(49)

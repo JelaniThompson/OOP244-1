@@ -11,7 +11,7 @@ namespace AMA
 {
 	const int MAX_CHAR_SKU = 7;					// Maximum number of characters in a sku (stock keeping unit)
 	const int MAX_CHAR_UNIT = 10;				// Maximum number of characters in a sku (stock keeping unit)
-	const int MAX_CHAR_NAME = 75;				// Maximum number of characters in the user’s name descriptor for a product length
+	const int MAX_CHAR_NAME = 75;				// Maximum number of characters in the userï¿½s name descriptor for a product length
 	const double TAX_RATE = 0.13;				// The current tax rate
 
 	const int max_sku_length = MAX_CHAR_SKU;
@@ -21,9 +21,9 @@ namespace AMA
 	class Product 
 	{
 	private:
-		char mp_Pr_Type;						// A character that indicates the type of the product – for use in the file record
-		char mp_Pr_Sku[MAX_CHAR_SKU + 1];		// A character array that holds the product’s sku (stock keeping unit) - null char
-		char mp_Pr_Unit[MAX_CHAR_UNIT + 1];		// A character array that describes the product’s units
+		char mp_Pr_Type;						// A character that indicates the type of the product ï¿½ for use in the file record
+		char mp_Pr_Sku[MAX_CHAR_SKU + 1];		// A character array that holds the productï¿½s sku (stock keeping unit) - null char
+		char mp_Pr_Unit[MAX_CHAR_UNIT + 1];		// A character array that describes the productï¿½s units
 		char* mp_Address_Pr_Name;				// A pointer that holds the address of a string in dynamic memory containing the name of the product
 		int mp_Quantity_Pr_OnHand;				// An integer that holds the quantity of the product currently on hand; that is, the number of units currently on hand
 		int mp_Quantity_Pr_Needed;				// An integer that holds the quantity of the product needed; that is, the number of units needed
@@ -45,7 +45,7 @@ namespace AMA
 		Product(char type = 'N');				// This constructor optionally receives a character that identifies the product type. Default is N
 
 		// Saves the data into the object
-		Product(const char* sku, const char* address, const char * unit, int onHand = 0, int needed = 0, double beforeTax = 0.0, bool taxable = true);
+		Product(const char* sku, const char* address, const char * unit, int onHand = 0, bool taxable = true, double beforeTax = 0.0, int needed = 0);
 
 		Product(const Product& other);			// This constructor receives an unmodifiable reference to a Product object and copies the object referenced to the current object
 		

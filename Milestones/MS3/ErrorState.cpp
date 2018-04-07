@@ -10,6 +10,7 @@ using namespace std;
 
 namespace AMA
 {
+    // receives the address of a C-style null terminated string that holds an error message
     ErrorState::ErrorState(const char* errorMessage)
     {
         if (errorMessage == nullptr)
@@ -23,33 +24,39 @@ namespace AMA
         }
     }
 
+    // de-allocates any memory that has been dynamically allocated by the current object
     ErrorState::~ErrorState()
     {
         delete[] m_MessageAddress;
         m_MessageAddress = nullptr;
     }
 
+    // clears any message stored by the current object and initializes the object to a safe empty state
     void ErrorState::clear()
     {
         delete[] this->m_MessageAddress;
         m_MessageAddress = nullptr;
     }
 
+    // returns true if the current object is in a safe empty state
     bool ErrorState::isClear() const
     {
-        return (m_MessageAddress == nullptr) ? true : false;
+        return (this->m_MessageAddress == nullptr) ? true : false;
     }
 
+    // stores a copy of the C-style string pointed to by str
     void ErrorState::message(const char* str)
     {
-        delete[] m_MessageAddress;
-        m_MessageAddress = new char[strlen(str) + 1];
-        strcpy(m_MessageAddress, str);
+        int strLength = strlen(str);
+        m_MessageAddress = new char[strLength + 1];
+        strncpy(m_MessageAddress, str, strLength);
+        m_MessageAddress[0] = '\0';
     }
 
+    // returns the address of the message stored in the current object.
     const char* ErrorState::message() const
     {
-        return m_MessageAddress;
+        return this->m_MessageAddress;
     }
 
     std::ostream& operator<<(std::ostream& os, const ErrorState& em)
